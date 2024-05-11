@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  font-family: montserrat;
+}
+
+body {
+  /* background-color: #000000; */
+  background: linear-gradient(to bottom, #000000 80%, #002743);
+}
+
+/* cores */
+
+.corTitulos {
+  color: #fff;
+}
+
+.corSubtitulos {
+  color: #a0a0a0;
+}
+
+/* fontes */
+
+.fontePrincipal {
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.fonteSecundaria {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #a0a0a0;
+}
+
+.displayFlex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  height: 100vh;
+}
+
+.wrapper {
+  max-width: 1200px;
+  width: 22%;
+  height: 60vh;
+  background-color: #141519;
+  border-radius: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.form input {
+  border: none;
+  background-color: #141519;
+  width: 80%;
+  height: 30px;
+  border-bottom: 2px solid #59595b;
+  font-size: 0.9em;
+  color: #fff;
+  transition: 0.25s;
+}
+
+.form input::placeholder {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #a0a0a0;
+  transition: 0.25s;
+}
+
+.form input:focus {
+  outline: none;
+  border-bottom: 2px solid #f47521;
+}
+
+.form input:focus::placeholder {
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.form select,
+option {
+  border: none;
+  background-color: #141519;
+  width: 80%;
+  height: 30px;
+  border-bottom: 2px solid #59595b;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #a0a0a0;
+  transition: 0.25s;
+}
+
+.form select:focus {
+  outline: none;
+  border-bottom: 2px solid #f47521;
+}
+
+input::-webkit-file-upload-button {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #a0a0a0;
+  background-color: #141519;
+  border: none;
+}
+
+.submitWrapper {
+  width: 30%;
+  background-color: #59595b;
+  border-radius: 15px;
+  transition: .25s;
+  height: 40px;
+}
+
+.submitWrapper:hover {
+  width: 35%;
+}
+
+.submit {
+  color: #f47521;
+  transition: .25s;
+}
+
+.submit:hover {
+  rotate: 7deg;
+}
+
+#submitBtn {
+  border: none;
+  width: 60px;
+
+}
+
+#submitBtn[type="submit"] {
+  transition: 0.25s;
+  background-color: #00000000;
+}
+
+#submitBtn[type="submit"]:hover {
+  color: #f47521;
+}

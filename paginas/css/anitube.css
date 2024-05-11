@@ -1,0 +1,187 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  font-family: montserrat;
+}
+
+body {
+  background-color: #000000;
+}
+
+/* animações */
+@keyframes opacidade {
+  0% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
+
+/* presets */
+
+/* cores */
+
+.corTitulos {
+  color: #fff;
+}
+
+.corSubtitulos {
+  color: #a0a0a0;
+}
+
+/* fontes */
+
+.fontePrincipal {
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.fonteSecundaria {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #a0a0a0;
+}
+
+/* reset */
+
+.displayFlex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  max-width: 1200px;
+  width: 100%;
+}
+
+/* navbar and header */
+
+.headerContainer {
+  background-color: #141519;
+}
+
+.navBar {
+  height: 120px;
+}
+
+.pesquisa {
+  position: relative;
+  border: none;
+  background-color: #141519;
+  width: 900px;
+  height: 50px;
+  margin-top: 20px;
+  border-bottom: 2px solid #59595b;
+  font-size: 34px;
+  color: #fff;
+  font-family: Lato, Helvetica Neue, helvetica, sans-serif;
+  transition: 0.25s;
+}
+
+.pesquisa::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+.pesquisa:focus {
+  outline: none;
+  border-bottom: 2px solid #f47521;
+}
+
+.pesquisa::placeholder {
+  position: absolute;
+  font-size: 34px;
+  font-family: Lato, Helvetica Neue, helvetica, sans-serif;
+  color: #a0a0a0;
+  bottom: 3px;
+}
+
+.searchBox {
+  position: relative;
+}
+
+.searchBox i {
+  color: #a0a0a0;
+  position: absolute;
+  transform: scale(1.8);
+  left: 97%;
+  top: 55%;
+  display: none;
+}
+
+.searchBox i:hover {
+  color: #cecece;
+  position: absolute;
+  transform: scale(1.8);
+  left: 97%;
+  top: 55%;
+}
+
+/* main content */
+
+.content {
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: 380px 380px 380px;
+  grid-template-rows: 280px;
+  gap: 30px;
+}
+
+.animeBox {
+  height: 280px;
+  position: relative;
+}
+
+.anime {
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.anime img {
+  width: 380px;
+  height: 210px;
+}
+
+.animeInfo {
+  width: 380px;
+  height: 280px;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #141519;
+  padding: 10px;
+  animation: opacidade 0.25s;
+}
+
+.sinopseAnime {
+  font-size: 1rem;
+}
+
+.newAnime {
+  color: #f47521;
+  position: fixed;
+  left: 97%;
+  top: 90%;
+  font-size: 3em;
+  transition: 0.25s;
+}
+
+.newAnime:hover {
+  color: #59595b;
+}
+
+
+.semResultados img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
