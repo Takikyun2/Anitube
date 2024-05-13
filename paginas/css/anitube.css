@@ -162,6 +162,15 @@ body {
   animation: opacidade 0.25s;
 }
 
+.sinopseBox {
+  height: 130px;
+  overflow: scroll;
+}
+
+.sinopseBox::-webkit-scrollbar {
+  display: none;
+}
+
 .sinopseAnime {
   font-size: 1rem;
 }
@@ -184,4 +193,21 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 10px;
+}
+
+.icons a i {
+  color: #a0a0a0;
+  font-size: 1rem;
+  transition: .25s;
+}
+
+.icons a i:hover {
+  color: #f47521;
 }

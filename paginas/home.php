@@ -98,9 +98,15 @@ foreach ($resultado as $listar) {
             <h3 class="anoAnime fonteSecundaria"><i class="fa-solid fa-calendar"></i>
               <?= $anoAnime[$i]; ?>
             </h3>
-            <h3 class="sinopseAnime fonteSecundaria">
-              <?= $sinopseAnime[$i]; ?>
-            </h3>
+            <div class="sinopseBox">
+              <h3 class="sinopseAnime fonteSecundaria">
+                <?= $sinopseAnime[$i]; ?>
+              </h3>
+            </div>
+            <div class="icons">
+              <a href="../cadastros/editaCadastroAnime.php?id=<?= $idAnime[$i]; ?>" class="editBtn"><i class="fa-solid fa-pen-to-square"></i></a>
+              <a href="" class="deleteBtn"><i class="fa-solid fa-trash"></i></a>
+            </div>
           </div>
         </div>
       <?php }
