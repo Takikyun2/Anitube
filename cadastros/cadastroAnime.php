@@ -38,7 +38,7 @@ foreach ($resultado as $listar) {
           <option selected>Selecione o gênero</option>
           <?php for ($i = 0; $i < count($idGenero); $i++) { ?>
             <option value="<?= $idGenero[$i]; ?>">
-              <?= $generoAnime[$i]; ?>
+              <?= $generoAnime [$i]; ?>
             </option>
           <?php } ?>
         </select>

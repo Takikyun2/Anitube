@@ -99,6 +99,51 @@ class Selecao
     }
   }
 
+  // selecioanar animes por id, para o edita cadastro
+  public function selecionarAnimePorID($anime_id)
+{
+    try {
+        if (!$this->db) {
+            throw new Exception("Falha na conexão com o banco de dados.");
+        }
+
+        $stmt = $this->db->prepare(
+            "SELECT
+                a.idanime,
+                a.nomeanime,
+                a.anoanime,
+                a.sinopseanime,
+                a.genero_idgenero,
+                a.datahoraregistro,
+                i.animeimgid,
+                i.anime_idanime,
+                i.imganime,
+                g.idgenero,
+                g.genero,
+                g.datahoraregistro
+            FROM
+                animes a
+            LEFT JOIN
+                animeimg i ON a.idanime = i.anime_idanime
+            LEFT JOIN
+                genero g ON g.idgenero = a.genero_idgenero
+            WHERE
+                a.idanime = :anime_id"
+        );
+
+        $stmt->bindParam(":anime_id", $anime_id, PDO::PARAM_INT);
+
+        if ($stmt->execute()) {
+            $res = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $res;
+        } else {
+            throw new PDOException("Erro: Não foi possível executar a declaração SQL da função selecionarAnimePorID");
+        }
+    } catch (PDOException $erro) {
+        echo "Erro: " . $erro->getMessage();
+    }
+}
+
   function selecionarGeneros()
   {
     try {
@@ -125,4 +170,6 @@ class Selecao
       echo "Erro" . $erro->getMessage();
     }
   }
+
+
 }
