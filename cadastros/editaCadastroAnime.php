@@ -12,26 +12,12 @@ if (isset($_GET['id'])) {
   // Recuperar os dados do anime com base no ID
   $resultado = $busca->selecionarAnimePorID($anime_id);
   $resultadoGeneros = $busca->selecionarGeneros();
-  
+
   if ($resultado === false) {
     echo "Erro ao selecionar o anime.";
     exit;
   }
 
-  // Verificar se o formulário de edição foi submetido
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Processar os dados enviados do formulário de edição e atualizar o anime no banco de dados
-    // Substitua este trecho de código com o script de processamento de edição adequado
-    // Lembre-se de validar os dados recebidos antes de atualizar o banco de dados
-
-    // Redirecionar após a edição
-    header("Location: ../paginas/home.php");
-    exit;
-  }
-} else {
-  // Redirecione de volta para a página principal se o ID não estiver presente na URL
-  header("Location: ../paginas/home.php");
-  exit;
 }
 ?>
 
@@ -51,11 +37,11 @@ if (isset($_GET['id'])) {
 <body>
 
 
-  <main class="container displayFlex" id="?= $idCliente[$i]; ?>">
+  <main class="container displayFlex" id="editaAnimes<?= $resultado['idanime']; ?>">
     <div class="wrapper displayFlex">
       <form class="form" method="post" action="../backend/controller/atualizaAnime.php" enctype="multipart/form-data">
-        <input type="text" id="tituloAnime" name="tituloAnime" value="<?= $resultado['nomeanime']; ?>" placeholder="Titulo">
-        <select id="generoAnime" name="generoAnime">
+        <input type="text" id="tituloAnimeEdit" name="tituloAnimeEdit" value="<?= $resultado['nomeanime']; ?>" placeholder="Titulo">
+        <select id="generoAnimeEdit" name="generoAnimeEdit">
           <option selected>Selecione o gênero</option>
           <?php foreach ($resultadoGeneros as $genero) { ?>
             <option value="<?= $genero['idgenero']; ?>" <?= $resultado['genero_idgenero'] == $genero['idgenero'] ? 'selected' : ''; ?>>
@@ -63,9 +49,10 @@ if (isset($_GET['id'])) {
             </option>
           <?php } ?>
         </select>
-        <input type="text" id="sinopseAnime" name="sinopseAnime" value="<?= $resultado['sinopseanime']; ?>" placeholder="Sinopse">
-        <input type="text" id="anoAnime" name="anoAnime" value="<?= $resultado['anoanime']; ?>" placeholder="Ano">
-        <input type="file" id="imgAnime" value="<?= $resultado['imganime']; ?>" name="imgAnime">
+        <input type="text" id="sinopseAnimeEdit" name="sinopseAnimeEdit" value="<?= $resultado['sinopseanime']; ?>" placeholder="Sinopse">
+        <input type="text" id="anoAnimeEdit" name="anoAnimeEdit" value="<?= $resultado['anoanime']; ?>" placeholder="Ano">
+        <input type="file" id="imgAnimeEdit" name="imgAnimeEdit">
+        <input type="hidden" id="idAnimeEdit" name="idAnimeEdit" value="<?= $resultado['idanime']; ?>">
         <div class="submitWrapper displayFlex"><input type="submit" id="submitBtn"><i class="fa-solid fa-arrow-up-from-bracket submit"></i></div>
       </form>
     </div>

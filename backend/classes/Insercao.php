@@ -26,7 +26,7 @@ class Insercao
     $sinopseAnime,
     $idGenero,
     $dataHoraRegistro,
-    $nome_arquivo
+    $animeImgName
   ) {
     try {
       if (!$this->db) {
@@ -47,7 +47,7 @@ class Insercao
       $anime_id = $this->db->lastInsertId();
 
       $stmt = $this->db->prepare("INSERT INTO animeimg (imganime, anime_idanime ) VALUES (:imganime, :anime_idanime)");
-      $stmt->bindParam(':imganime', $nome_arquivo);
+      $stmt->bindParam(':imganime', $animeImgName);
       $stmt->bindParam(':anime_idanime', $anime_id);
 
       $stmt->execute();

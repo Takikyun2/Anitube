@@ -26,9 +26,9 @@ if (!empty($animeImg["name"])) {
 
     if ($ext[1] == "png" || $ext[1] == "jpeg" || $ext[1] == "jpg" || $ext[1] == "jpe") {
 
-      $nome_arquivo = md5(uniqid(time())) . "." . $ext[1];
+      $animeImgName = md5(uniqid(time())) . "." . $ext[1];
 
-      $caminho_arquivo = "../../arquivos/banners" . $nome_arquivo;
+      $caminho_arquivo = "../../arquivos/banners" . $animeImgName;
 
       move_uploaded_file($animeImg["tmp_name"], $caminho_arquivo);
     } else {
@@ -46,7 +46,7 @@ $resultado = $insere->inserirAnime(
   $sinopseAnime,
   $idGenero,
   $dataHoraRegistro,
-  $nome_arquivo
+  $animeImgName
 );
 
 header("Location: http://localhost/Anitube/paginas/home.php");

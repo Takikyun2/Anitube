@@ -20,7 +20,7 @@ foreach ($resultado as $listar) {
   $generoIdGenero[] = $listar['genero_idgenero'];
   $animeImgId[] = $listar['animeimgid'];
   $anime_IdAnime[] = $listar['anime_idanime'];
-  $nome_arquivo[] = $listar['imganime'];
+  $animeImgName[] = $listar['imganime'];
   $idGenero[] = $listar['idgenero'];
   $generoAnime[] = $listar['genero'];
   $dataHoraRegistroGenero[] = $listar['datahoraregistro'];
@@ -79,7 +79,7 @@ foreach ($resultado as $listar) {
       <?php for ($i = 0; $i < count($idAnime); $i++) { ?>
         <div class="animeBox">
           <div class="anime">
-            <img src="../arquivos/banners<?= $nome_arquivo[$i]; ?>" alt="" id="imgAnime">
+            <img src="../arquivos/banners<?= $animeImgName[$i]; ?>" alt="" id="imgAnime">
             <h1 class="nomeAnime fontePrincipal">
               <?= $nomeAnime[$i]; ?>
             </h1>
@@ -105,9 +105,11 @@ foreach ($resultado as $listar) {
             </div>
             <div class="icons">
               <a href="../cadastros/editaCadastroAnime.php?id=<?= $idAnime[$i]; ?>" class="editBtn"><i class="fa-solid fa-pen-to-square"></i></a>
-              <a href="" class="deleteBtn"><i class="fa-solid fa-trash"></i></a>
+              <button type= "submit" data-bs-target="#deleteForm<?= $idAnime[$i]; ?>" class="deleteBtn"><i class="fa-solid fa-trash"></i></button>
             </div>
           </div>
+
+          <form action="../backend/controller/deletaAnime.php" method="POST" id="deleteForm<?= $idAnime[$i]; ?>"></form>
         </div>
       <?php }
       ?>
