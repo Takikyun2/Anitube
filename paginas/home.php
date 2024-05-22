@@ -105,11 +105,12 @@ foreach ($resultado as $listar) {
             </div>
             <div class="icons">
               <a href="../cadastros/editaCadastroAnime.php?id=<?= $idAnime[$i]; ?>" class="editBtn"><i class="fa-solid fa-pen-to-square"></i></a>
-              <button type= "submit" data-bs-target="#deleteForm<?= $idAnime[$i]; ?>" class="deleteBtn"><i class="fa-solid fa-trash"></i></button>
+              <form action="../backend/controller/deletaAnime.php" method="POST" id="deleteForm<?= $idAnime[$i]; ?>">
+                <input type="hidden" id="idAnimeDelete" name="idAnimeDelete" value="<?= $idAnime[$i]; ?>">
+                <button type="submit" class="deleteBtn"><i class="fa-solid fa-trash"></i></button>
+              </form>
             </div>
           </div>
-
-          <form action="../backend/controller/deletaAnime.php" method="POST" id="deleteForm<?= $idAnime[$i]; ?>"></form>
         </div>
       <?php }
       ?>
