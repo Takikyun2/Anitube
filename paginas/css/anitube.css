@@ -226,9 +226,3 @@ body {
 .icons button i:hover {
   color: #f47521;
 }
-
-.confirmDeleteBox{
-position: absolute;
-top: 50%;
-right: 50%;
-}

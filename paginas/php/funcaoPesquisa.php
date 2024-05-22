@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['search'])) {
     $output = '';
 
     foreach ($resultado as $listar) {
-      $output = '<div class="animeBox">
+      $output .= '<div class="animeBox">
                     <div class="anime">
                       <img src="../arquivos/banners' . $listar['imganime'] . '" alt="" id="imgAnime">
                       <h1 class="nomeAnime fontePrincipal">
@@ -36,9 +36,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['search'])) {
                       <h3 class="anoAnime fonteSecundaria"><i class="fa-solid fa-calendar"></i>
                         ' . $listar['anoanime'] . '
                       </h3>
-                      <h3 class="sinopseAnime fonteSecundaria">
+                      <div class="sinopseBox">
+                        <h3 class="sinopseAnime fonteSecundaria">
                         ' . $listar['sinopseanime'] . '
-                      </h3>
+                        </h3>
+                      </div>
+                      <div class="icons">
+                        <a href="../cadastros/editaCadastroAnime.php?id=' . $listar['idanime'] . '" class="editBtn"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <form action="../backend/controller/deletaAnime.php" method="POST" id="deleteForm' . $listar['idanime'] . '">
+                          <input type="hidden" id="idAnimeDelete" name="idAnimeDelete" value="' . $listar['idanime'] . '">
+                          <button type="submit" class="deleteBtn"><i class="fa-solid fa-trash"></i></button>
+                        </form>
+                      </div>
                     </div>
                   </div>';
     }
