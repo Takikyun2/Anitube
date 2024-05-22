@@ -17,7 +17,6 @@ if (isset($_GET['id'])) {
     echo "Erro ao selecionar o anime.";
     exit;
   }
-
 }
 ?>
 
@@ -53,6 +52,7 @@ if (isset($_GET['id'])) {
         <input type="text" id="anoAnimeEdit" name="anoAnimeEdit" value="<?= $resultado['anoanime']; ?>" placeholder="Ano">
         <input type="file" id="imgAnimeEdit" name="imgAnimeEdit">
         <input type="hidden" id="idAnimeEdit" name="idAnimeEdit" value="<?= $resultado['idanime']; ?>">
+        <input type="hidden" id="imgAnimeNameEdit" name="imgAnimeNameEdit" value="<?= $resultado['imganime']; ?>">
         <div class="submitWrapper displayFlex"><input type="submit" id="submitBtn"><i class="fa-solid fa-arrow-up-from-bracket submit"></i></div>
       </form>
     </div>

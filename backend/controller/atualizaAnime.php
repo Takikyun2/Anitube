@@ -8,10 +8,18 @@ $anoAnime = $_POST['anoAnimeEdit'];
 $sinopseAnime = $_POST['sinopseAnimeEdit'];
 $idGenero = $_POST['generoAnimeEdit'];
 $idAnime = $_POST['idAnimeEdit'];
-
+$imgAnimeNameEdit = $_POST['imgAnimeNameEdit'];
 $animeImg = $_FILES['imgAnimeEdit'];
 
+/* echo "Nome do Anime: " . $nomeAnime . "<br>";
+echo "Ano do Anime: " . $anoAnime . "<br>";
+echo "Sinopse do Anime: " . $sinopseAnime . "<br>";
+echo "ID do Gênero: " . $idGenero . "<br>";
+echo "ID do Anime: " . $idAnime . "<br>";
+var_dump($imgAnimeNameEdit); // Verifica o conteúdo da variável */
 
+
+$animeImgName = $imgAnimeNameEdit;
 $dataHoraRegistro = date("Y-m-d H:i:s");
 
 $error = array();
@@ -53,6 +61,8 @@ $resultado = $atualiza->atualizarAnime(
   $animeImgName, // Se não houver nova imagem, passa uma string vazia
   $idAnime
 );
+
+/* var_dump($resultado); */
 
 header("Location: http://localhost/Anitube/paginas/home.php");
 exit;

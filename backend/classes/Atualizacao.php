@@ -41,8 +41,7 @@ class Atualizacao
       anoanime = :anoanime,
       sinopseanime = :sinopseanime,
       genero_idgenero = :idgenero,
-      datahoraregistro = :datahoraregistro,
-      animeimgname = :animeimgname
+      datahoraregistro = :datahoraregistro
       WHERE idanime = :idanime");
 
       // Vincula os parâmetros da instrução SQL
@@ -51,7 +50,6 @@ class Atualizacao
       $stmt->bindParam(':sinopseanime', $sinopseAnime);
       $stmt->bindParam(':idgenero', $idGenero);
       $stmt->bindParam(':datahoraregistro', $dataHoraRegistro);
-      $stmt->bindParam(':animeimgname', $animeImgName);
       $stmt->bindParam(':idanime', $idAnime);
 
       // Executa a instrução SQL
@@ -59,11 +57,11 @@ class Atualizacao
 
       // Prepara a instrução SQL para atualizar a imagem do anime
       $stmt = $this->db->prepare("UPDATE animeimg SET
-      animeimg = :animeimg
+      imganime = :imganime
       WHERE anime_idanime = :anime_idanime");
 
       // Vincula os parâmetros da instrução SQL
-      $stmt->bindParam(':animeimg', $animeImgName);
+      $stmt->bindParam(':imganime', $animeImgName);
       $stmt->bindParam(':anime_idanime', $idAnime);
 
       // Execute a instrução SQL
