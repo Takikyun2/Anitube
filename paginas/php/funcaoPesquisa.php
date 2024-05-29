@@ -7,7 +7,7 @@ $busca = new Selecao();
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['search'])) {
   $search_term = $_POST['search'];
 
-  $resultado = $busca->selecionarAnimeUnico($search_term);
+  $resultado = $busca->selecionarAnimeUnico($search_term); // chama a funcao selecionar animes unicos, e pega o termo da pesquisa, ai ele vai buscar no banco de dados de acordo com o termo da pesquisa
 
 
   if (!empty($resultado)) {

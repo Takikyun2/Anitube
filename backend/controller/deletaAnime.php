@@ -1,7 +1,7 @@
 <?php
 require_once '../classes/Delecao.php';
 
-// Valida e sanitiza o input
+// Valida e pega os dados input
 if (isset($_POST['idAnimeDelete']) && is_numeric($_POST['idAnimeDelete'])) {
   $idAnime = intval($_POST['idAnimeDelete']);
 

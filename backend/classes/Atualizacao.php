@@ -72,7 +72,6 @@ class Atualizacao
 
       return "Ok";
     } catch (PDOException $erro) {
-
       // Reverte a transação em caso de erro
       $this->db->rollBack();
       return "Erro: " . $erro->getMessage();

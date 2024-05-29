@@ -11,6 +11,8 @@ $idAnime = $_POST['idAnimeEdit'];
 $imgAnimeNameEdit = $_POST['imgAnimeNameEdit'];
 $animeImg = $_FILES['imgAnimeEdit'];
 
+// ! linha de comentada para testes quando for preciso checar se os valores estao chegando
+
 /* echo "Nome do Anime: " . $nomeAnime . "<br>";
 echo "Ano do Anime: " . $anoAnime . "<br>";
 echo "Sinopse do Anime: " . $sinopseAnime . "<br>";
@@ -18,6 +20,7 @@ echo "ID do Gênero: " . $idGenero . "<br>";
 echo "ID do Anime: " . $idAnime . "<br>";
 var_dump($imgAnimeNameEdit); // Verifica o conteúdo da variável */
 
+// ! linha de comentada para testes quando for preciso checar se os valores estao chegando
 
 $animeImgName = $imgAnimeNameEdit;
 $dataHoraRegistro = date("Y-m-d H:i:s");
@@ -58,11 +61,15 @@ $resultado = $atualiza->atualizarAnime(
   $sinopseAnime,
   $idGenero,
   $dataHoraRegistro,
-  $animeImgName, // Se não houver nova imagem, passa uma string vazia
+  $animeImgName,
   $idAnime
 );
 
+// ! linha comentada para checar o resultado do metodo
+
 /* var_dump($resultado); */
+
+// ! linha comentada para checar o resultado do metodo
 
 header("Location: http://localhost/Anitube/paginas/home.php");
 exit;

@@ -29,6 +29,9 @@ foreach ($resultado as $listar) {
 
 ?>
 
+// ! codigo php acima contem a logica para o foreach procurar e incrementar sobre a consulta que resgata os dados do banco
+// ! futuramente esse codigo sera removido para um arquivo separado
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,36 +79,36 @@ foreach ($resultado as $listar) {
     <div class="content wrapper" id="todosOsResultados">
 
       <!-- card do anime -->
-      <?php for ($i = 0; $i < count($idAnime); $i++) { ?>
+      <?php for ($i = 0; $i < count($idAnime); $i++) { ?> <!-- incrementando o id -->
         <div class="animeBox">
           <div class="anime">
-            <img src="../arquivos/banners<?= $animeImgName[$i]; ?>" alt="" id="imgAnime">
+            <img src="../arquivos/banners<?= $animeImgName[$i]; ?>" alt="" id="imgAnime"> <!-- imagem do anime -->
             <h1 class="nomeAnime fontePrincipal">
-              <?= $nomeAnime[$i]; ?>
+              <?= $nomeAnime[$i]; ?> <!-- nome do anime -->
             </h1>
             <h3 class="fonteSecundaria">
-              <?= $generoAnime[$i]; ?>
+              <?= $generoAnime[$i]; ?> <!-- genero do anime -->
             </h3>
           </div>
 
           <div class="animeInfo">
             <h1 class="nomeAnime fontePrincipal">
-              <?= $nomeAnime[$i]; ?>
+              <?= $nomeAnime[$i]; ?> <!-- nome do anime -->
             </h1>
             <h3 class="categoriaAnime fonteSecundaria"><i class="fa-solid fa-list"></i>
-              <?= $generoAnime[$i]; ?>
+              <?= $generoAnime[$i]; ?> <!-- genero do anime -->
             </h3>
             <h3 class="anoAnime fonteSecundaria"><i class="fa-solid fa-calendar"></i>
-              <?= $anoAnime[$i]; ?>
+              <?= $anoAnime[$i]; ?> <!-- ano do anime -->
             </h3>
             <div class="sinopseBox">
               <h3 class="sinopseAnime fonteSecundaria">
-                <?= $sinopseAnime[$i]; ?>
+                <?= $sinopseAnime[$i]; ?> <!-- sinopse do anime -->
               </h3>
             </div>
             <div class="icons">
-              <a href="../cadastros/editaCadastroAnime.php?id=<?= $idAnime[$i]; ?>" class="editBtn"><i class="fa-solid fa-pen-to-square"></i></a>
-              <form action="../backend/controller/deletaAnime.php" method="POST" id="deleteForm<?= $idAnime[$i]; ?>">
+              <a href="../cadastros/editaCadastroAnime.php?id=<?= $idAnime[$i]; ?>" class="editBtn"><i class="fa-solid fa-pen-to-square"></i></a> <!-- botão editar, essa linha manda o id do anime para a pagina de edicao caso o botão seja clicado -->
+              <form action="../backend/controller/deletaAnime.php" method="POST" id="deleteForm<?= $idAnime[$i]; ?>"> <!-- logica do botão deletar -->
                 <input type="hidden" id="idAnimeDelete" name="idAnimeDelete" value="<?= $idAnime[$i]; ?>">
                 <button type="submit" class="deleteBtn"><i class="fa-solid fa-trash"></i></button>
               </form>
@@ -119,11 +122,11 @@ foreach ($resultado as $listar) {
 
   <!-- script area -->
 
-  <script src="./js/anitube.js"></script>
-  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script src="./js/anitube.js"></script> <!-- script do anitube para deixar o visual dinamico -->
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script> <!-- script do jquery -->
 
 
-  <script>
+  <script> // ! CODIGO DO JQUERY PARA A FUNÇÃO DE BUSCA DE ANIMES E PARA AJUSTES NOS ELEMENTOS QUE TEM O EFEITO DE HOVER
     $('#resultadoPesquisa').hide();
     // Função para aplicar o efeito de hover nos elementos anime
     function aplicarHover() {
@@ -153,15 +156,17 @@ foreach ($resultado as $listar) {
     // Chama a função para aplicar o efeito de hover inicialmente
     aplicarHover();
 
+
+    // ! FUNCAO DE BUSCA DE ANIMES
     $(document).ready(function() {
       $('#termoBusca').on('input', function() {
         var termo = $(this).val();
         console.log(termo);
 
-        if (termo.trim() === '') {
+        if (termo.trim() === '') { // se o campo de busca estiver vazio ele mostra a div que contem todos os resultados
           $('#todosOsResultados').show();
           $('#resultadoPesquisa').hide();
-        } else {
+        } else { // se houver algo digitado no campo de busca ele esconde a div que contem todos os resultados e mostra a div que contem os resultados da busca
           $.ajax({
             type: 'POST',
             url: './php/funcaoPesquisa.php',
@@ -179,7 +184,7 @@ foreach ($resultado as $listar) {
         }
       });
 
-      $('.cancelBtn').on('click', function() {
+      $('.cancelBtn').on('click', function() { // botão de limpar o campo de busca
         // Limpe o campo de busca
         $('#termoBusca').val('');
         $('#todosOsResultados').show();

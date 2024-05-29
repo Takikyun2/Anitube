@@ -19,8 +19,8 @@ class Insercao
       echo 'Erro ao conectar com o banco de dados: ' . $e->getMessage();
     }
   }
-
-  function inserirAnime(
+// metodo para inserir o anime
+  function inserirAnime( // como parametros ele pega as variaveis que vem do controller contendo os dados do formulario que vao ser inseridos
     $nomeAnime,
     $anoAnime,
     $sinopseAnime,
@@ -28,13 +28,16 @@ class Insercao
     $dataHoraRegistro,
     $animeImgName
   ) {
-    try {
+    try { // verifica de conectou com o banco de dados
       if (!$this->db) {
-        throw new Exception("Falha na conexão com o banco de dados.");
+        throw new Exception("Falha na conexão com o banco de dados."); // se nao estiver conectado, ele pega o erro e exibe junto com uma mensagem
       }
 
-      $this->db->beginTransaction();
-
+      $this->db->beginTransaction(); // inicia a transação
+      // intrucao sql para inserir no banco de dados,
+      // no insert into em "animes" ele pega a tebela animes, entre parenteses ( seleciona as colunas da tabela que vao receber os dados ) 
+      //a parte values sao os valores que vao ser inseridos, aqui esta em forma de apelido
+      //o stmt tem bindparam que e uma forma mais segura de insercao no banco, os apelidos logo sao substituidos pelo valor da variavel
       $stmt = $this->db->prepare("INSERT INTO animes (nomeanime, anoanime, sinopseanime, genero_idgenero, datahoraregistro) VALUES (:nomeanime, :anoanime, :sinopseanime, :genero_idgenero, :datahoraregistro)");
       $stmt->bindParam(':nomeanime', $nomeAnime);
       $stmt->bindParam(':anoanime', $anoAnime);
@@ -42,22 +45,23 @@ class Insercao
       $stmt->bindParam(':genero_idgenero', $idGenero);
       $stmt->bindParam(':datahoraregistro', $dataHoraRegistro);
 
-      $stmt->execute();
+      $stmt->execute(); // executa a instrucao
 
-      $anime_id = $this->db->lastInsertId();
+      $anime_id = $this->db->lastInsertId(); // pega o ultimo id inserido para poder inserir na tebela das imagens
+      //o id do anime ta na imagem como chave estrageira para poder identificar o a imagem correta a ser atribuida ao anime
 
       $stmt = $this->db->prepare("INSERT INTO animeimg (imganime, anime_idanime ) VALUES (:imganime, :anime_idanime)");
       $stmt->bindParam(':imganime', $animeImgName);
       $stmt->bindParam(':anime_idanime', $anime_id);
 
-      $stmt->execute();
+      $stmt->execute(); // executa a instrucao
 
-      $this->db->commit();
+      $this->db->commit(); // confirma a transação
 
-      return "Oke";
+      return "Oke"; // se tudo der certo ele retorna o oke, caso contrario pega os erros
     } catch (PDOException $erro) {
-      $this->db->rollback();
-      return "Erro" . $erro->getMessage();
+      $this->db->rollback(); // se der erro ele desfaz a transação
+      return "Erro" . $erro->getMessage(); // retorna o erro
     }
   }
 }
